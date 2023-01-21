@@ -1,10 +1,12 @@
 package com.mitocode.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Data
 @Entity
@@ -25,6 +27,10 @@ public class Examen {
 	@Column(name="descripcion", nullable= false, length=150)
 	@Size(min=3, message="{examen_descripcion.size}")
 	private String descripcion;
+
+	@ManyToMany(mappedBy = "listaExamen",	fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<Consulta> consultas;
 	
 	@Column(name = "estado")
 	private Boolean estado;

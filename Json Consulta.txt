@@ -1,0 +1,26 @@
+{
+  "consulta" :
+   {
+     "paciente": {
+                  "idPaciente":2
+                 },
+      "medico": {
+                 "idMedico":1
+                },
+        "especialidad": {
+                 "idEspecialidad":2
+                },
+      "fecha": "2022-03-03T14:32:45.000Z",
+      "detalleConsulta": [
+        {
+         "diagnostico": "Covid19",
+         "tratamiento": "Acetaminofen C/8 Horas"
+        }
+      ]
+   },
+  "listaExamen": [
+      {      
+       "idExamen":1     
+      }
+  ]
+}
