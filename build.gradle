@@ -17,11 +17,8 @@ dependencies {
     implementation 'io.quarkus:quarkus-jdbc-postgresql'
     implementation 'io.quarkus:quarkus-arc'
     implementation 'io.quarkus:quarkus-smallrye-openapi'
-    implementation 'org.jboss.resteasy:resteasy-multipart-provider:6.2.2.Final'
-    compileOnly 'org.projectlombok:lombok:1.18.24'
-    annotationProcessor 'org.projectlombok:lombok:1.18.24'
-    implementation 'net.sf.jasperreports:jasperreports:6.20.0'
-    implementation 'com.lowagie:itext:2.1.7' //Versiones superiores no funcionan
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
     testImplementation 'io.quarkus:quarkus-junit5'
     testImplementation 'io.rest-assured:rest-assured'
 }

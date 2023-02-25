@@ -8,21 +8,21 @@ public abstract class CRUDImpl<T, ID> implements ICRUD<T,ID> {
 
     protected abstract IGenericRepo<T, ID> getRepo();
 
-    public T registrar(T t){
+    public T save(T t){
         return getRepo().save(t);
     }
 
-    public T modificar(T t){
+    public T update(T t){
         return getRepo().save(t);
     }
 
-    public List<T> listar(){
+    public List<T> findAll(){
         return getRepo().findAll();
     }
 
-    public T listarPorId(ID id) {
+    public T findById(ID id) {
         return getRepo().findById(id).orElse(null);
     }
 
-    public void eliminar(ID id) { getRepo().deleteById(id);	}
+    public void delete(ID id) { getRepo().deleteById(id);	}
 }

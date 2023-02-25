@@ -1,10 +1,10 @@
 {
-  "consulta" :
+  "consults" :
    {
      "paciente": {
                   "idPaciente":2
                  },
-      "medico": {
+      "medic": {
                  "idMedico":1
                 },
         "especialidad": {
