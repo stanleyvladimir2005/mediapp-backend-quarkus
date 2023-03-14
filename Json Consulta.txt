@@ -1,26 +1,26 @@
 {
-  "consults" :
+  "consult" :
    {
-     "paciente": {
-                  "idPaciente":2
+     "patient": {
+                  "idPatient":1
                  },
-      "medic": {
-                 "idMedico":1
-                },
-        "especialidad": {
-                 "idEspecialidad":2
-                },
-      "fecha": "2022-03-03T14:32:45.000Z",
-      "detalleConsulta": [
-        {
-         "diagnostico": "Covid19",
-         "tratamiento": "Acetaminofen C/8 Horas"
-        }
-      ]
+     "medic":   {
+                  "idMedic":1
+                 },
+     "specialty": {
+                      "idSpecialty":1
+                     },
+     "numberConsult": "C1",
+     "consultDate": "2023-01-14T23:03:00.000Z",
+     "details": [
+       {
+         "diagnosis": "Covid19", "treatment": "Acetaminofen C/8 Horas"
+       }
+     ]
    },
-  "listaExamen": [
-      {      
-       "idExamen":1     
+  "listExam": [
+      {
+       "idExam":1
       }
   ]
 }
