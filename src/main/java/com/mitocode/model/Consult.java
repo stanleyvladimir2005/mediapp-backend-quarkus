@@ -2,7 +2,7 @@ package com.mitocode.model;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;

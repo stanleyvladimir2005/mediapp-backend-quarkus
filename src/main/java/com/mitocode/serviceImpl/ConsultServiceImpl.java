@@ -7,7 +7,7 @@ import com.mitocode.repo.IConsultRepo;
 import com.mitocode.repo.IGenericRepo;
 import com.mitocode.service.IConsultService;
 import org.springframework.stereotype.Service;
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,10 +49,5 @@ public class ConsultServiceImpl extends CRUDImpl<Consult,Integer>  implements IC
 			consults.add(cr);
 		});
 		return consults;
-	}
-
-	@Override
-	public byte[] generateReport() throws Exception {
-		return new byte[0];
 	}
 }

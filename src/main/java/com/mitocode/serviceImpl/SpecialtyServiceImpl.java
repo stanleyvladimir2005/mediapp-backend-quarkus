@@ -4,10 +4,10 @@ import com.mitocode.model.Specialty;
 import com.mitocode.repo.ISpecialtyRepo;
 import com.mitocode.repo.IGenericRepo;
 import com.mitocode.service.ISpecialtyService;
-import javax.inject.Inject;
-import javax.inject.Singleton;
+import jakarta.inject.Inject;
+import org.springframework.stereotype.Service;
 
-@Singleton
+@Service
 public class SpecialtyServiceImpl extends CRUDImpl<Specialty,Integer> implements ISpecialtyService {
 
 	@Inject

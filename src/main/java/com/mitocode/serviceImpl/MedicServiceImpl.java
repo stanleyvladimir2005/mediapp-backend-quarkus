@@ -4,13 +4,13 @@ import com.mitocode.model.Medic;
 import com.mitocode.repo.IGenericRepo;
 import com.mitocode.repo.IMedicRepo;
 import com.mitocode.service.IMedicService;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.inject.Inject;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MedicServiceImpl extends CRUDImpl<Medic, Integer>implements IMedicService {
 
-	@Autowired
+	@Inject
 	IMedicRepo repo;
 
 	@Override

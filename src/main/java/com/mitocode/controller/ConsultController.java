@@ -5,10 +5,10 @@ import com.mitocode.dto.FilterConsultDTO;
 import com.mitocode.model.Consult;
 import com.mitocode.service.IFileMediaService;
 import com.mitocode.service.IConsultService;
-import javax.inject.Inject;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/v1/consults")

@@ -15,7 +15,4 @@ public interface IConsultService extends ICRUD <Consult, Integer> {
     List<Consult> searchByDate(FilterConsultDTO filter);
 
     List<ConsultProductDTO> listProduct();
-
-    byte[] generateReport() throws Exception ;
-
 }

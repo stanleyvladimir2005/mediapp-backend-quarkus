@@ -5,7 +5,7 @@ import com.mitocode.repo.IMediaFileRepo;
 import com.mitocode.repo.IGenericRepo;
 import com.mitocode.service.IFileMediaService;
 import org.springframework.stereotype.Service;
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 @Service
 public class FileMediaServiceImpl extends CRUDImpl<FileMedia, Integer> implements IFileMediaService {
