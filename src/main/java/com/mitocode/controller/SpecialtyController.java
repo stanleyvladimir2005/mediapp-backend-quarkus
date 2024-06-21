@@ -6,6 +6,8 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import lombok.val;
+
 import java.util.List;
 
 @Path("/v1/specialtys")
@@ -14,42 +16,42 @@ import java.util.List;
 public class SpecialtyController {
 
 	@Inject
-	ISpecialtyService service;
+	ISpecialtyService specialtyService;
 
 	@GET
 	public List<Specialty> findAll() {
-		return service.findAll();
+		return specialtyService.findAll();
 	}
 
 	@GET
 	@Path("/{id}")
 	public Specialty findById(@PathParam("id") Integer id) throws Exception {
-		Specialty especialidad = service.findById(id);
-		if (especialidad == null)
+		val specialty = specialtyService.findById(id);
+		if (specialty == null)
 			throw new Exception("ID: " +id);
-		return especialidad;
+		return specialty;
 	}
 
 	@POST
 	public Response save(Specialty esp) {
-		service.save(esp);
+		specialtyService.save(esp);
 		return Response.ok().build();
 	}
 
 	@DELETE
 	@Path("/{id}")
 	public Response delete(@PathParam("id") Integer id) throws Exception {
-		Specialty especialidad = service.findById(id);
-		if (especialidad == null)
+		Specialty specialty = specialtyService.findById(id);
+		if (specialty == null)
 			throw new Exception("ID: " +id);
 		else
-			service.delete(id);
+			specialtyService.delete(id);
 		return Response.ok().build();
 	}
 
 	@PUT
 	public Response update(Specialty esp) {
-		service.update(esp);
+		specialtyService.update(esp);
 		return Response.ok().build();
 	}
 }

@@ -6,9 +6,9 @@ import com.mitocode.model.Consult;
 import com.mitocode.repo.IConsultRepo;
 import com.mitocode.repo.IGenericRepo;
 import com.mitocode.service.IConsultService;
+import lombok.val;
 import org.springframework.stereotype.Service;
 import jakarta.inject.Inject;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,37 +16,37 @@ import java.util.List;
 public class ConsultServiceImpl extends CRUDImpl<Consult,Integer>  implements IConsultService {
 
 	@Inject
-	IConsultRepo repo;
+	IConsultRepo consultRepo;
 
 	@Override
 	protected IGenericRepo<Consult, Integer> getRepo() {
-		return repo;
+		return consultRepo;
 	}
 
 	@Override
 	public List<Consult> listExamByConsult(Integer idConsult) {
-		return repo.listExamByConsult(idConsult);
+		return consultRepo.listExamByConsult(idConsult);
 	}
 
 	@Override
 	public List<Consult> search(FilterConsultDTO filter) {
-		return repo.search(filter.getDui(), filter.getFullName());
+		return consultRepo.search(filter.getDui(), filter.getFullName());
 	}
 
 	@Override
 	public List<Consult> searchByDate(FilterConsultDTO filter) {
-		LocalDateTime dateNext = filter.getConsultDate().plusDays(1);
-		return repo.searchByDate(filter.getConsultDate(), dateNext);
+		val dateNext = filter.getConsultDate().plusDays(1);
+		return consultRepo.searchByDate(filter.getConsultDate(), dateNext);
 	}
 
 	@Override
 	public List<ConsultProductDTO> listProduct() {
 		List<ConsultProductDTO> consults = new ArrayList<>();
-		repo.listProducts().forEach( x -> {
-			ConsultProductDTO cr = new ConsultProductDTO();
-			cr.setQuantity(Integer.parseInt(String.valueOf(x[0])));
-			cr.setConsultDate(String.valueOf(x[1]));
-			consults.add(cr);
+		consultRepo.listProducts().forEach( x -> {
+			val consultProductDTO = new ConsultProductDTO();
+			consultProductDTO.setQuantity(Integer.parseInt(String.valueOf(x[0])));
+			consultProductDTO.setConsultDate(String.valueOf(x[1]));
+			consults.add(consultProductDTO);
 		});
 		return consults;
 	}

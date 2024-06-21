@@ -6,6 +6,8 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import lombok.val;
+
 import java.util.List;
 
 @Path("/v1/patients")
@@ -14,42 +16,42 @@ import java.util.List;
 public class PatientController {
 
     @Inject
-    IPatientService service;
+    IPatientService patientService;
 
     @GET
     public List<Patient> findAll() {
-       return service.findAll();
+       return patientService.findAll();
     }
 
     @GET
     @Path("/{id}")
     public Patient findById(@PathParam("id") Integer id) throws Exception {
-      Patient paciente = service.findById(id);
-      if (paciente == null)
+        val patient = patientService.findById(id);
+      if (patient == null)
          throw new Exception("ID: " +id);
-      return paciente;
+      return patient;
     }
 
     @POST
     public Response save (Patient pac) {
-       service.save(pac);
+       patientService.save(pac);
        return Response.ok().build();
     }
 
     @DELETE
     @Path("/{id}")
     public Response delete(@PathParam("id") Integer id) throws Exception {
-       Patient paciente = service.findById(id);
-       if (paciente == null)
+       val patient = patientService.findById(id);
+       if (patient == null)
           throw new Exception("ID: " +id);
        else
-          service.delete(id);
+           patientService.delete(id);
        return Response.ok().build();
     }
 
     @PUT
     public Response update(Patient pac) {
-       service.update(pac);
+       patientService.update(pac);
        return Response.ok().build();
     }
 }

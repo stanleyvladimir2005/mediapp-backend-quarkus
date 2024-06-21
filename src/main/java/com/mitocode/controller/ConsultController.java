@@ -1,6 +1,5 @@
 package com.mitocode.controller;
 
-import com.mitocode.dto.ConsultProductDTO;
 import com.mitocode.dto.FilterConsultDTO;
 import com.mitocode.model.Consult;
 import com.mitocode.service.IFileMediaService;
@@ -9,6 +8,7 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import lombok.val;
 import java.util.List;
 
 @Path("/v1/consults")
@@ -17,20 +17,20 @@ import java.util.List;
 public class ConsultController {
 	
 	@Inject
-	IConsultService service;
+	IConsultService consultService;
 
 	@Inject
 	IFileMediaService fileService;
 
     @GET
 	public List<Consult> findAll() {
-		return service.findAll();
+		return consultService.findAll();
 	}
 
 	@GET
 	@Path("/{id}")
 	public Consult findById(@PathParam("id") Integer id) throws Exception {
-		Consult consults = service.findById(id);
+		val consults = consultService.findById(id);
 		if (consults == null)
 			throw new Exception("ID: " + id);
 		return consults;
@@ -38,24 +38,24 @@ public class ConsultController {
 
 	@POST
 	public Response save(Consult consults) {
-		service.save(consults);
+		consultService.save(consults);
 		return Response.ok().build();
 	}
 
 	@DELETE
 	@Path("/{id}")
 	public Response delete(@PathParam("id") Integer id) throws Exception {
-		Consult consults = service.findById(id);
+		val consults = consultService.findById(id);
 		if (consults == null)
 			throw new Exception("ID: " +id);
 		else
-			service.delete(id);
+			consultService.delete(id);
 		return Response.ok().build();
 	}
 
 	@PUT
 	public Response update(Consult consults) {
-		service.update(consults);
+		consultService.update(consults);
 		return Response.ok().build();
 	}
 
@@ -63,27 +63,23 @@ public class ConsultController {
 	@Path("/search")
 	public Response search(FilterConsultDTO filter) {
 		List<Consult> consults = null;
+		if (filter != null)
+            consults = (filter.getConsultDate() != null) ? consultService.searchByDate(filter) : consultService.search(filter);
 
-		if (filter != null) {
-			if (filter.getConsultDate() != null)
-				consults = service.searchByDate(filter);
-			else
-				consults = service.search(filter);
-		}
 		return Response.ok(consults).build();
 	}
 
 	@GET
 	@Path("/listProduct")
 	public Response listProduct() {
-		List<ConsultProductDTO> consults  = service.listProduct();
+		val consults  = consultService.listProduct();
 		return Response.ok(consults).build();
 	}
 
 	@GET
 	@Path("/readFile/{idFile}")
 	public Response leerArchivo(@PathParam("idFile") Integer idFileMedia) {
-		byte[] arr = fileService.findById(idFileMedia).getValue();
+		val arr = fileService.findById(idFileMedia).getValue();
 		return Response.ok(arr).build();
 	}
 }
