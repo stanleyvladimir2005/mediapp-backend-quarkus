@@ -2,8 +2,6 @@ package com.mitocode.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import java.util.List;
@@ -11,8 +9,6 @@ import java.util.List;
 @Data
 @Entity
 @Table (name = "exam")
-@SQLDelete(sql = "UPDATE exam SET status = false WHERE id_exam = ?")
-@Where(clause = "status = true")
 public class Exam {
 
 	@Id

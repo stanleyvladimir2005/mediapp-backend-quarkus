@@ -1,16 +1,12 @@
 package com.mitocode.model;
 
 import lombok.Data;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 
 @Data
 @Entity
 @Table(name = "specialty")
-@SQLDelete(sql = "UPDATE specialty SET status = false WHERE id_especialty = ?")
-@Where(clause = "status = true")
 public class Specialty {
 
 	@Id
